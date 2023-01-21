@@ -1,0 +1,106 @@
+= Professionelle Softwareentwicklung: Praktische Übung 9
+:icons: font
+:icon-set: fa
+:experimental:
+:source-highlighter: rouge
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:stem: latexmath
+endif::[]
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen.
+
+Wir erwarten von Ihnen, dass Sie ...
+
+* ein Headset o.ä. bereithalten.
+Testen Sie Ihr Audiosetup mit anderen Kommilitonen (z.B. Ihrer Gruppe) aus.
+Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen.
+* eine IDE installiert haben und mit der Entwicklungsumgebung flüssig umgehen können.
+* sich mit Wochenblatt 10 befasst haben
+* den vorgegebenen Code angeschaut haben
+
+== Ziele der Übung
+
+Das Lernziel der Aufgabe ist es, den Umgang mit der Java Stream API zu üben.
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein
+. Am Anfang gibt es eine kurze Vorstellungsrunde
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die "Driver" Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam gearbeitet nach den Regeln des Mob Programmings
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung
+
+== Aufgabe: Die langsame Lernplattform
+
+Wir wollen die Antwortzeiten der Lernplattform Odyssee überwachen.
+Dazu haben wir die Antwortzeiten zwischen Mitte Mai und Anfang November 2020 aufgezeichnet und in einer Textdatei `odyssey.txt` gespeichert.
+
+IMPORTANT: Alle Aufgaben sollen mit Streams gelöst werden.
+
+=== Einlesen der Daten 
+
+Ein Eintrag besteht aus zwei Werten, einem Unix Zeitstempel (Anzahl der Sekunden, die seit dem 01.01.1970, 0:00:00 Uhr vergangen sind) und der gemessenen Antwortzeit der Webseite in Millisekunden.
+Die beiden Werte stehen jeweils in einer eigenen Zeile.
+Die Textdatei besteht also abwechselnd aus Zeitstempel und Antwortzeit.
+
+In der Klasse `Odyssee` gibt es bereits Code, der die Datei `odyssey.txt` einliest.
+Sie müssen die Methode `parseEintragListe` ergänzen, sodass aus den Zeilen der Eingabedatei eine Liste von Objekten des Typs `Eintrag` erzeugt wird.
+
+Der erste Schritt sollte also sein, jeweils zwei Zeilen zu lesen und in ein Objekt zu überführen, das einen Eintrag repräsentiert.
+Ein entsprechendes Objekt ist in der Klasse `EintragSammler` vorbereitet und muss noch ergänzt und aufgerufen werden.
+
+=== Analyse der Daten 
+
+Wir werden nun einige Funktionen schreiben, die die eingelesenen Daten analysieren.
+Schreiben Sie zu jeder Funktion auch Tests.
+
+*Einfache Basisdaten*
+
+Schreiben Sie Methoden, die die minimale, maximale und mittlere Antwortzeit berechnen.
+
+*Erzeugen eines Histogramms*
+
+Um einen ersten Eindruck von der Verteilung der Antwortzeiten zu bekommen, wollen wir die Daten gruppieren.
+Dazu gruppieren wir die Antwortzeiten nach 100ms Intervallen und zählen die Antwortzeiten, die in den Intervallen liegen.
+
+Das Histogram soll den Typ `Map<Integer,Integer>` haben.
+
+Beispiel:
+Die Antwortzeiten sind `123, 823, 454, 114, 192, 144, 478, 831, 192`.
+Es ergibt sich dann als Ergebnis der Methode eine Map mit den Einträgen `{400=2, 800=2, 100=5}`
+
+*Wann ist Odyssee langsam?*
+
+Berechnen Sie die mittlere Antwortzeit
+
+. gruppiert nach Wochentagen
+. gruppiert nach Stunden
+
+*Entwicklung über die Zeit*
+
+Wurde Odyssee mit der Zeit schneller?
+Geben Sie für jede Woche die mittleren Antwortzeiten einer frei gewählten Stunde an einem Wochentag Ihrer Wahl aus.
+
+TIP: Die Methode `get` von `LocalDateTime` in Kombination mit der Klasse `WeekFields` kann hilfreich sein, um die Gruppierung nach Wochen vorzunehmen.
+
+*Verfügbarkeit*
+
+Wir nehmen einmal an, dass eine Antwortzeit von über 10s bedeutet, dass das System offline war und unser Messwerkzeug einen Timeout produziert hat.
+Wie hoch war die Gesamtverfügbarkeit in Prozent?
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander.
+Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct].
+Die TutorInnen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.

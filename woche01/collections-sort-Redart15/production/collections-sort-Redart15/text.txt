@@ -1,5 +1,0 @@
-Motivation
-Standard Library
-Schleifen
-Git 1
-Remote Mob

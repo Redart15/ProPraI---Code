@@ -1,0 +1,27 @@
+= Professionelle Softwareentwicklung: Praktische Übung 5
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Hinweise
+
+Game of life besteht aus einer zweidimensionalen Anordnung von Zellen. Zellen sind entweder aktiv oder inaktiv.
+Rundenbasiert wird das gesamte Feld aktualisiert. Dabei wird für jede Zelle gezählt, wieviele aktive Nachbarn
+ sie hat und entsprechend der folgenden drei Regeln die aktivität in der nächsten Generation berechnet:
+
+. Aktive Zellen mit mehr als 3 aktiven Nachbarn sind in der Folgegeneration inaktiv
+. Aktive Zellen mit weniger als 2 aktiven Nachbarn sind in der Folgegeneration inaktiv
+. Inaktive Zellen mit genau 3 aktiven Nachbarn sind in der Folgegeneration aktiv
+
+Es gibt einige Muster, die interessantes Verhalten zeigen Ein solches Muster ist der Blinker:
+
+```
+000       010       000
+111  -->  010  -->  111
+000       010       000 
+```
+
+Der Blinker funktioniert leider in dem Programm nicht. 
+
+Finden und beheben Sie das Problem. Was halten Sie von der Testbarkeit und wie könnte das Programm verbessert werden?

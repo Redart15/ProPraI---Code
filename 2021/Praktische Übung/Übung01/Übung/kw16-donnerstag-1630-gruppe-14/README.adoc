@@ -1,0 +1,62 @@
+= Professionelle Softwareentwicklung: Praktische Übung 1
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen. 
+
+Wir erwarten von Ihnen, dass Sie 
+
+* git und mob auf Ihrem Rechner installiert haben. Probieren Sie beide Werkzeuge aus, indem Sie `git --version` bzw. `mob --version` in Ihrem Terminal aufrufen. (Fragen Sie rechtzeitig vor der praktischen Übung um Hilfe, falls es Probleme gibt.)
+* ein Headset o. ä. bereithalten. Testen Sie Ihr Audiosetup mit anderen Kommilitonen (z. B. Ihrer Gruppe) aus. Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen. 
+* den Aufgabentext unten gelesen und sich dazu schon Gedanken gemacht haben. 
+
+== Ziele der Übung
+
+Diese Übung dient hauptsächlich dazu, sich mit dem Tooling, das wir verwenden werden, vertraut zu machen. Dazu gehören eine Software zur Videokonferenz und Screen-Sharing und das mob-Werkzeug. Um das Handover mit `mob` einzuüben, werden Sie ca. alle 5 Minuten den Driver wechseln. Die Tutor:innen werden dabei helfen, die Zeiten einzuhalten. 
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein 
+. Am Anfang gibt es eine kurze Vorstellungsrunde 
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die Driver-Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam nach den Regeln des Mob-Programmings gearbeitet 
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. Ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung 
+
+== Aufgabe 
+
+In einer Veranstaltung an einer Universität werden praktische Übungen in kleinen Gruppen durchgeführt. Studierende melden sich dazu für einen Termin (zum Beispiel Montag, 10:30 Uhr) an. Es kann sein, dass an einem Termin von mehreren Tutor:innen jeweils eine Übungsgruppe angeboten wird. Die angemeldeten Studierenden müssen nach Ende der Anmeldefrist auf diese Gruppen verteilt werden. 
+
+Gruppen haben eine maximale Kapazität (z. B. 6 Studierende) und eine minimale Anzahl von Studierenden, die notwendig sind (z. B. 4 Studierende). 
+
+Ihre Aufgabe ist es, ein Programm zur Verteilung der Studierenden zu entwickeln. Dabei sollen folgende Bedingungen eingehalten werden: 
+
+. Es dürfen nie mehr Studierende in eine Gruppe eingeordnet werden, als die maximale Kapazität vorgibt.
+. *Wenn* es eine Möglichkeit gibt, die Studierenden so zu verteilen, dass für alle nicht-leeren Gruppen die Mindestgröße erreicht wird, muss das Programm die Lösung finden.
++
+NOTE: Es ist nicht immer möglich eine Lösung zu finden. Zum Beispiel, wenn die Mindestkapazität vier ist und sich nur drei Studierende registrieren.
+. Bei mehreren Verteilungsalternativen soll die Anzahl an Gruppen minimal sein.
+. Wenn es mehreren Verteilungsalternativen mit der gleichen Anzahl der Gruppen gibt, sollen die Gruppen möglichst gleich groß sein.
+
+Folgende Annahmen sollen gelten:
+
+. Das vorgeschaltete Anmeldesystem verhindert, dass sich mehr Studierende anmelden als Gesamtkapazität vorhanden ist. 
+. Alle Gruppen haben die gleichen Kapazitätsgrenzen (also maximale und minimale Gruppengröße). Das Programm muss aber mit beliebigen Grenzen umgehen können.
+. Es reicht zunächst nur einen Termin (mit mehreren parallel stattfindenen Gruppen) in Betracht zu ziehen. Sie brauchen sich dann also *nicht* mit der Verwaltung von Zeit und Datum zu befassen und können alle angemeldeten Personen irgendeiner beliebigen Gruppe zuorden.
+
+Das Programm soll in irgendeiner Form die Namen der für einen Termin angemeldeten Studierenden bekommen, die Namen der Tutor:innen, die an diesem Termin eine Gruppe anbieten, sowie die Mindest- und Höchstzahl der Teilnehmer:innen. Die Ausgabe soll eine Zuordnung von Studierenden auf eine:n Tutor:in sein. 
+
+Sie können frei entscheiden, wie Sie das Programm implementieren. Schreiben Sie auch Testszenarien, mit denen Sie das korrekte Verhalten Ihres Algorithmus überprüfen. Denken Sie daran, alle Parameter zu variieren. 
+
+TIP: Verwenden Sie eine Methode, die die Parameter entgegennimmt; verschiedene Parameter können z. B. in der `main`-Methode fest vorgegeben sein und müssen nicht dynamisch eingelesen werden. Auf diese Weise müssen Sie sich am Anfang nicht mit der Eingabe der Werte befassen und können sich direkt auf das Wesentliche, den Verteilungsalgorithmus, konzentrieren. 
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander. Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct]. Die Tutor:innen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.   

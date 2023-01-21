@@ -1,0 +1,58 @@
+= Professionelle Softwareentwicklung: Praktische Übung 7
+:icons: font
+:icon-set: fa
+:experimental:
+:source-highlighter: rouge
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:stem: latexmath
+endif::[]
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen. 
+
+Wir erwarten von Ihnen, dass Sie ...
+
+* ein Headset o.ä. bereithalten. Testen Sie Ihr Audiosetup mit anderen Kommilitonen (z.B. Ihrer Gruppe) aus. Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen. 
+* eine IDE installiert haben und mit der Entwicklungsumgebung flüssig umgehen können.
+* den Aufgabentext unten gelesen haben und sich schon einmal Gedanken zur Implementierung gemacht haben.
+
+== Ziele der Übung
+
+Das Lernziel der Aufgabe ist eine Implementierung mit Hilfe von Polymorphismus und dem Open/Close Prinzip umzusetzen.  
+Lernziel ist *nicht* genau zu verstehen, was der Code macht, der die graphische Darstellung übernimmt.
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein 
+. Am Anfang gibt es eine kurze Vorstellungsrunde 
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die "Driver" Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam gearbeitet nach den Regeln des Mob Programmings 
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung 
+
+== Aufgabe: Bauer Defense 
+
+Wir wollen die Spiele-Engine für ein klassisches Tower-Defense Spiel als objektorientiertes Programm umsetzen. Das Spiel wird auf einem rechteckigen Spielfeld durchgeführt. Auf dem Spielfeld gibt es eine Anzahl von Feldfrüchten, die der Bauer vor den angreifenden Schädlingen verteidigen muss. Es gibt bereits einen Prototyp, welcher Käfer und Frösche als Angreifer bzw. Verteidiger implementiert.
+
+Ihre Aufgabe ist es, die Spiellogik so umzuschreiben, sodass sie einem objektorientierten Ansatz folgt. Das Spiel soll später um weitere Akteure (Krähe, Vogelscheuche, ...) erweiterbar sein. Die neuen Akteure sollen nicht erfordern, dass wir die gesamte Spiellogik umschreiben.
+
+* In der Übung sollten Sie zunächst den Dispatch über die `enum` Werte *innerhalb* der Spiellogik (d.h. in der Klasse `Unit`) loswerden. 
+* Schreiben Sie danach den Code für die Krähe, Sie können sich selber ein sinnvolles Verhalten für die Einheit ausdenken. 
+* Optimalerweise können Sie die `UnitType` komplett entfernen (das erfordert aber dann Änderungen am UI Code, zumindest in der Klasse `GamePanel`).
++
+TIP: Wenn Ihre Basisklasse (oder Interface) `Unit` heißt, dann können Sie z.B. `Class<? extends Unit>` statt `UnitType` als Schlussel für die HashMap in `GamePanel` verwenden.
+
+
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander. Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct]. Die TutorInnen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.   

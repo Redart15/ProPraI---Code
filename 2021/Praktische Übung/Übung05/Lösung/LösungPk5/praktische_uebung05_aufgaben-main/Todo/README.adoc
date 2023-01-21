@@ -1,0 +1,23 @@
+= Professionelle Softwareentwicklung: Praktische Übung 5
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Hinweise
+
+Das Programm organisiert eine Task-Liste, leider gibt es Probleme.
+
+Starten Sie das Programm und fügen Sie die Tasks
+
+"Programm zum Laufen bringen"
+"Fehler beheben"  
+
+hinzu, die zum selben Projekt "Propra" gehören und am Tag der praktischen Übung fällig sind.
+
+Fügen Sie den Task "Spring Boot lernen" zum Projekt "Propra2" hinzu.
+
+Geben Sie die List der Tasks nach Projekt sortiert aus. 
+
+Finden und beheben Sie die auftretenden Probleme.
+

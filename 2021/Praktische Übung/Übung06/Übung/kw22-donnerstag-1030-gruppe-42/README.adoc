@@ -1,0 +1,63 @@
+= Professionelle Softwareentwicklung: Praktische Übung 6
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen. 
+
+Wir erwarten von Ihnen, dass Sie 
+
+* ein Headset o. ä. bereithalten. Testen Sie Ihr Audiosetup mit anderen Kommilitonen (z. B. Ihrer Gruppe) aus. Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen. 
+* den Aufgabentext unten gelesen und sich dazu schon Gedanken gemacht haben. 
+
+== Ziele der Übung
+
+In dieser Übung üben wir, die Wartbarkeit einer bestehenden Software im Hinblick auf Austauschbarkeit von Komponenten und Testbarkeit zu erhöhen. 
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein 
+. Am Anfang gibt es eine kurze Vorstellungsrunde 
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll, und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die Driver-Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam nach den Regeln des Mob-Programmings gearbeitet
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung 
+
+== Hintergrund 
+
+Dieses verfluchte Virus! Wegen SARS-CoV-2 läuft das Geschäft in Onkel Giacomos Eiscafé :icecream: nicht gut. Die Gäste bleiben aus und Tante Irma macht sich große Sorgen um die Zukunft. Aber Onkel Giacomo hätte sich nicht 40 Jahre im Geschäft gehalten, wenn er nicht einfallsreich wäre. Er hat eine Online Marketing-Kampagne gestartet und dazu hat Cousin Vincenzo, der sonst Software für Banken entwickelt, eine Anwendung geschrieben, die automatisch regelmäßig Erinnerungsmails (lies: Spammails) an Kunden verschickt. 
+
+Die Software ist etwas in Eile entwickelt worden, funktioniert aber soweit. Trotzdem möchte Onkel Giacomo, dass etwas Liebe in das Programm investiert wird, da er einige Anpassungen in der Zukunft erwartet. Das Programm wird mit zwei Hilfsprogrammen (mail.jar und wetter.jar) ausgeliefert. Die beiden Programme verschicken E-Mails (nicht wirklich!) und besorgen Wetterdaten (auch nicht wirklich). Die Art und Weise, wie Mails geschickt werden und die Wetterdaten geholt werden, wird sich in Zukunft ziemlich sicher ändern. Vincenzo denkt darüber nach, eine digitale Wetterstation zu kaufen und für die Anwendung zu nutzen. Weil es professioneller wirkt, will er bei den Mails von GMail vielleicht zu einem eigenen Mailserver wechseln, welcher in einer eigenen Domain betrieben wird. Bei der Datenbank wird über ein Umzug von Apache Derby auf MySQL oder Postgres nachgedacht. Die Regeln, die entscheiden, ob und wann welche Mail an wen verschickt wird, sind die Stellen, an denen sich am häufigsten etwas ändern wird. Hier wird Onkel Giacomo sicherlich mehrmals pro Woche Anpassungen vornehmen wollen. 
+
+Werfen Sie einen Blick in die Implementierung. Es reicht, wenn Sie grob verstehen wie der Code funktioniert und strukturiert ist. Achten Sie also eher auf den Kontrollfluss und nicht so sehr auf die genaue Implementierung.  
+
+Es gibt auch ein Video, in dem die https://youtu.be/UmVl7Dm1d1w[Struktur und Funktionsweise] der BBB Anwendung erklärt wird. 
+
+NOTE: Im Video wird gesagt, dass die externen Programme im Ordner `bin` liegen. Die Programme sind in den Ordner `lib/ext` verschoben worden.
+
+== Aufgabe für die praktische Übung
+
+In der praktischen Übung wird es nun darum gehen, das Programm umzustrukturieren und dabei die Wartbarkeit der Software zu verbessern. Sie habe ja bereits in Übung 6 eine ungefähre Vorstellung bekommen, welche Komponenten in einer vereinfachten Version vorgekommen sind. In dieser Version werden noch einige wenige Komponenten mehr vorhanden sein. 
+
+Achten Sie dabei auf folgende Punkte:
+
+. Definieren Sie die Schnittstellen der Komponenten und kapseln Sie jede Komponente in einem Java-Package.
+. Sorgen Sie für die Trennung von Konstruktion und Ausführung durch Verwendung von Dependency Injection.
+. Verwenden Sie Dependency Inversion, um die Kopplung zwischen den Komponenten zu lockern.
+
+In dieser Übung werden wir zwar keine Tests für die Anwendung schreiben, aber wir wollen die Testbarkeit des Codes verbessern. 
+
+Da reproduzierbare, verlässliche Tests wichtig für uns sind, benötigen wir Kontrolle über die Umgebung. Wir wollen nicht bis Montag warten um zu testen, ob unsere Anwendung Cassata vorschlägt oder bis Juni warten um zu prüfen, dass bei heißem Wetter morgends Granita vorgeschlagen wird. Die Tests sollen auch 3 Uhr nachts im Januar das richtige Ergebnis produzieren. 
+
+Achten Sie daher auch darauf, dass Sie die Umgebungsinformationen (also alles, was von externem Zustand abhängt) in Komponenten kapseln, die Sie dann hypothetisch in einem Test ersetzen könnten. 
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander. 
+Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct]. Die Tutor:innen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.   

@@ -1,0 +1,14 @@
+= Professionelle Softwareentwicklung: Praktische Übung 5
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Hinweise
+
+Sie sind ja mittlerweile hervorragend mit den Bowlingregeln vertraut. 
+Das Programm hat leider Probleme bei Strikes und Spares. Finden Sie das Problem und beheben Sie es. 
+
+Warum ist es hier nicht so ganz einfach Tests zu schreiben? Wie könnte die Situation verbessert werden?
+
+

@@ -1,0 +1,92 @@
+= Professionelle Softwareentwicklung: Praktische Übung 2
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen. 
+
+Wir erwarten von Ihnen, dass Sie 
+
+* ein Headset o. ä. bereithalten. Testen Sie Ihr Audiosetup mit anderen Kommilitonen (z. B. Ihrer Gruppe) aus. Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen. 
+* `mob` lauffähig haben. Ab dieser Woche werden wir keine Zeit darauf verwenden Ihr Setup zu debuggen! 
+* den Aufgabentext unten gelesen und sich dazu schon Gedanken gemacht haben. 
+
+== Ziele der Übung
+
+In dieser Übung wollen wir den Umgang mit Java Collections und Schleifen vertiefen. 
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein 
+. Am Anfang gibt es eine kurze Vorstellungsrunde 
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll, und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die Driver-Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam nach den Regeln des Mob-Programmings gearbeitet
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung 
+
+== Aufgabe 
+
+Wir geben zu viel Geld aus! Um das Problem endgültig in den Griff zu bekommen, wollen wir uns ein kleines elektronisches Ausgabenbuch schreiben. In das Ausgabenbuch tragen wir ein, was wir wo gekauft haben und die Anwendung erzeugt uns auf Anfrage einen Report. 
+
+Das Programm soll nach dem Start Kommandos von der Standardeingabe lesen und ausführen. Wir schlagen vor, dass Sie folgende Kommandos umsetzen:
+
+* `exit` beendet das Programm.
+* `add <geschäft> <kategorie> <betrag>` fügt einen Betrag für ein Geschäft in einer Kategorie ein.
+* `report shop` gibt den Report nach Geschäften gruppiert aus.
+* `report category` gibt den Report nach Kategorien gruppiert aus.
+
+Die Namen der Geschäfte und die Kategorien können sich die Nutzer:innen selber ausdenken. Beispiele könnten Lebensmittel, Bücher, Computerspiele, … sein, aber es ist auch möglich, die Kategorien feingranularer (Brot, Kartoffeln, Bier, usw.) zu wählen.
+
+Ein Beispiel für einen Programmablauf könnte folgendermaßen aussehen. Die Eingaben sind mit `>` markiert.
+
+[source]
+----
+Ausgabenbuch ist bereit für die Eingaben
+> add Aldi Lebensmittel 29.30
+Hinzugefügt zum Shop Aldi in der Kategorie Lebensmittel: 29,30
+> add Durstbunker Lebensmittel 37.30
+Hinzugefügt zum Shop Durstbunker in der Kategorie Lebensmittel: 37,30
+> add Edeka Lebensmittel 48.33
+Hinzugefügt zum Shop Edeka in der Kategorie Lebensmittel: 48,33
+> add Steam Computerspiele 29.99
+Hinzugefügt zum Shop Steam in der Kategorie Computerspiele: 29,99
+> add Amazon Haushaltsartikel 6.67
+Hinzugefügt zum Shop Amazon in der Kategorie Haushaltsartikel: 6,67
+> add Amazon Computerspiele 38.99
+Hinzugefügt zum Shop Amazon in der Kategorie Computerspiele: 38,99
+> report category
+Computerspiele: 68,98
+Haushaltsartikel: 6,67
+Lebensmittel: 114,93
+> report shop
+Aldi: 29,30
+Amazon: 45,66
+Durstbunker: 37,30
+Edeka: 48,33
+Steam: 29,99
+> exit
+Bye.
+----
+
+IMPORTANT: Verwenden Sie geeignete Datenstrukturen aus den Java Collections. Verwenden Sie den für die Aufgaben jeweils idiomatischen Schleifentyp.
+
+=== Vorlage
+
+In der Klasse `Main` haben wir eine Vorlage für Ihre Implementierung geschrieben, die Sie verwenden können (aber nicht müssen!). In der Vorlage ist das Einlesen von der Kommandozeile und das Dispatchen (Aufrufen) auf Methode für die einzelnen Kommandos fertig und Sie müssen die Methoden  `report`, `add`, `exit`, `run` implementieren.
+
+TIP: Fangen Sie zum Warmwerden mit `exit` an. 
+
+=== Persistenz?
+
+Die Daten müssen nicht dauerhaft gespeichert werden. Es ist in Ordnung, wenn nach Beendigung des Programms die Daten nicht mehr vorhanden sind. Es ist aber empfehlenswert, das Programm beim Start automatisch mit einigen Testdaten zu initialisieren, damit Sie nicht jedes Mal alles eingeben müssen, wenn Sie das Programm ausprobieren.
+
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander. Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct]. Die Tutor:innen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.   

@@ -1,0 +1,43 @@
+= Professionelle Softwareentwicklung: Praktische Übung 3
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen. 
+
+Wir erwarten von Ihnen, dass Sie 
+
+* ein Headset o. ä. bereithalten. Testen Sie Ihr Audiosetup mit anderen Kommilitonen (z. B. Ihrer Gruppe) aus. Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen. 
+* den Aufgabentext unten gelesen und sich dazu schon Gedanken gemacht haben. 
+
+== Ziele der Übung
+
+In dieser Übung wollen wir den Umgang mit JUnit Tests und AssertJ vertiefen. 
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein 
+. Am Anfang gibt es eine kurze Vorstellungsrunde 
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll, und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die Driver-Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam nach den Regeln des Mob-Programmings gearbeitet
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung 
+
+== Aufgabe 
+
+Wimbledon ruft! In dieser Übung dreht sich alles um Tennis und die seltsame https://de.wikipedia.org/wiki/Tennis#Gliederung_und_Z%C3%A4hlweise[Zählweise in einem Spiel].
+
+Die Software ist schon fertig, aber es wurde vergessen sie zu testen. Das wollen wir nun nachholen. 
+
+Schreiben Sie Testfälle für die Klasse `tennis.TennisGame`. Es sollen alle Entscheidungen im Code abgetestet werden.
+
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander. Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct]. Die Tutor:innen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.   

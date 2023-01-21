@@ -1,0 +1,222 @@
+= Professionelle Softwareentwicklung: Praktische Übung 5
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+=== Shopping 
+
+Der Fehler kann reproduziert werden, indem für ein Geschäft zwei Einträge in unterschiedlichen Kategorien gemacht werden und dann der Detailreport aufgerufen wird. 
+
+Der Detailreport sollte für ein gegebenes Geschäft die Ausgaben nach Kategorie augeschlüsselt anzeigen. 
+Stattdessen wir einfach die Summe angezeigt. Der Grund ist die Verwendung der falschen Funktion zur 
+Gruppierung in der Methode `printDetailReport`.
+
+Statt `Ausgabe::getGeschaeft` muss dort `Ausgabe::getKategorie` verwendet werden. 
+
+[source, java]
+----
+void printDetailReport(String geschaeft) {
+  printReport(ausgaben.stream()
+          .filter(a -> a.getGeschaeft().equals(geschaeft))
+          .toList(),
+      Ausgabe::getKategorie);
+}
+----
+
+
+=== Movies
+
+Das Programm produziert beim Start eine `ArrayIndexOutOfBoundsException`. Außerdem ist noch die Sortierung fehlerhaft. 
+
+Es gibt zwei Möglichkeiten, das Problem zu beheben. 
+
+. Wir verwenden die Zählvariable der äußeren Schleife. Dann müssen wir den Code so ändern:
++
+[source, java]
+----
+for (a = 0; a < highSub; ++a) {
+  for (b = 0; b < highSub; ++b) {
+    String first = array[a].getName(); // index von b auf a geändert
+    String second = array[b].getName(); // index von b+1 auf b geändert
+    if (first.compareTo(second) < 0) {
+      temp = array[a]; // index von b auf a geändert
+      array[a] = array[b]; // index vorne von b auf a geändert
+      array[b] = temp; // index vorne von b+1 auf b geändert
+    }
+  }
+}
+----
+
+. Es gibt auch die Möglichkeit, dass wir tatsächlich immer nur Nachbarn anschauen.  
++
+[source, java]
+----
+for (a = 0; a < highSub; ++a) {
+  for (b = 0; b < highSub-1; ++b) { // nicht bis zum Ende laufen
+    String first = array[b].getName();
+    String second = array[b + 1].getName();
+    if (first.compareTo(second) > 0) { // wir müssen vertauschen, wenn der erste Wert hinter den zweiten soll
+      temp = array[b];
+      array[b] = array[b+1]; // zweiter Index auf b+1 geändert
+      array[b + 1] = temp;
+    }
+  }
+}
+----
+
+=== HtmlStrip
+
+Das Programm soll Tags aus HTML entfernen. Es gibt folgende mögliche Testcases, die ein Fehlverhalten zeigen:
+
+* Die Anführungszeichen, die das Zitat markieren werden entfernt
++
+[source]
+----
+<p><it>"If debugging is the process of removing software bugs, then programming must be the process of putting them in."</it> Edsger Dijkstra</p>
+----
+
+* Die Tags im Zitat werden nicht entfernt, dafür aber die Anführungszeichen des Zitats
++
+[source]
+----
+"<it>Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.</it>", Brian Kernighan
+----
+
+Der Fix ist ziemlich einfach, wir müssen die Bedingung für das Quoting-`if` erweitern, 
+
+[source, java]
+----
+if (c == '"' && tag) {
+  quote = !quote;
+}
+----
+
+== EnglishNumber
+
+Das Programm soll eine Zahl in einen englischen Text übersetzen. Der Bug tritt praktisch sofort auf, da falsche Arraypositionen berechnet werde. 
+
+Beispiele:
+
+[source, java]
+----
+System.out.println(new EnglishNumber(1).getString()); // => two
+
+System.out.println(new EnglishNumber(19).getString()); // => Out of bounds 
+----
+
+Es gibt verschiedene Möglichkeiten das Problem zu beheben. 
+
+* Die beiden Arrays `ones` und `tens` um einen Eintrag vorne zu ergänzen. Das ist vermutlich die einfachste Lösung. 
+
+* Die Stellen, an denen auf die Arrays zugegriffen wird (z.B. `string += ones[thisPart];`) so ändern, das auf die Stelle davor zugegriffen wird (also z.B. `string += ones[thisPart-1];`)
+
+== Bowling
+
+Bei dem Programm geht es um eine Anwendung, die Bowling Resultate verwalten soll. Die Anwendung crasht, wenn man einen Spare oder Strike wirft, also alle Pins mit einem oder zwei Versuchen abräumt.
+
+Der Fehler ist die Verwendung einer falschen Zählvariable in der Schleife
+
+[source, java]
+----
+if ((frametot == 10) &&
+     (extrarolls == false)) {
+   for (int t = roll + 1; t < 3; t++) {
+     frames[frame].rollindex[i] =
+         nextroll + (i - roll);
+   }
+ }
+----
+
+Beide `i` in der Schleife müssen durch `t` ersetzt werden.
+
+Diskutiert mit den Studierenden, warum das hier mit dem Testing nicht so super ist und wie die Situation verbessert werden könnte. 
+
+== List
+
+Das Programm ist eine verkettete Liste. Es gibt hier in beiden Methoden `reverse` und `hasLoop` Bugs. 
+
+Beide Bugs lassen sich mit folgendem Code reproduzieren
+
+[source, java]
+----
+ListNode n3 = new ListNode(1,null);
+ListNode n2 = new ListNode(2,n3);
+ListNode n1 = new ListNode(3,n2);
+
+List list = new List(n1);
+System.out.println(list.hasLoop()); // true statt false 
+list.reverse(); // Gibt eine ungültige Liste zurück
+}
+----
+
+=== reverse
+
+Das Problem ist, dass vergessen wurde einen Zeiger zu setzen. Das führt dazu, dass am Ende von `reverse` der `next` Zeiger des ersten Elements auf null zeigt. 
+
+Der Fix ist `ln1.next = ln3;` am Ende der `reverse` Methode.
+
+=== hasLoop
+
+Die Methode gibt `true` zurück für jede Liste, die mehr als ein Element hat. Der Algorithmus verwendet 2 Zeiger. Der erste Zeiger steht auf dem ersten, der 2. Zeiger auf dem 2. Element am Anfang. Der erste Zeiger wird um ein Elment nach vorne verschoben, der zweite um zwei. Nach jedem Schritt wird geprüft, ob die beiden Zeiger übereinstimmen. Irgendwann holt der zweite Zeiger bei einer Schleife den ersten Zeiger ein und die Schleife wird entdeckt. 
+
+Der Bug ist, dass nach dem Voranrücken des ersten Zeigers geprüft wird, ob die beiden Zeiger gleich sind, was bei mehr als einem Element immer wahr ist.
+
+[source, java]
+----
+ln1 = head;
+ln2 = head.next;
+
+while (true) {
+  // ...
+  
+  if (ln1.next == null) {
+    return false;
+  }
+  else {
+    ln1 = ln1.next;
+  }
+
+  if (ln1 == ln2) { // ist immer wahr 
+    return true;
+  }
+  
+  // ...
+}    
+----
+
+Repariert wird das, indem das `if` Statement gelöscht wird. 
+
+== Game of life
+
+Das Programm ist eine Implementierung von Game Of Life. Im Programm wird ein Random Grid erzeugt, daran sieht man praktisch gar nichts. Es gibt aber 
+Methoden um Blinker und Glider zu generieren. 
+
+Siehe: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns
+
+Am offensichtlichsten ist der Bug beim Blinker. der Blinker soll abwechselnd eine horizontale und vertikale Linie aus drei Zellen anzeigen. 
+
+Der Fehler im Programm ist ein Copy & Paste Fehler beim Erfassen der Nachbarn. 
+
+[source, java]
+----
+          neighbors.add(mainGrid[i][Math.floorMod(j - 1, mainGrid[i].length)]);
+          neighbors.add(mainGrid[i][Math.floorMod(j - 1, mainGrid[i].length)]);
+----
+
+Die Zelle `(i, j - 1)` wird doppelt gezählt, die Zelle `(i, j + 1)` wird nicht gezählt. 
+
+
+== Todo
+
+Bei dem Prgramm gibt es einen Fehler, wenn Todos in unterschiedlichen Projekten erzeugt werden und dann nach Projekt sortiert ausgegeben wird.
+
+Der Fehler ist Code, der mit Copy & Paste in der Methode `executeAction` der  Klasse `ProjectSorting` erzeugt wurde.
+
+[source, java]
+----
+String firstProject = firstTask.getValue().getProjectName();
+String secondProject = firstTask.getValue().getProjectName();
+----
+
+Die zweite Zeile muss auf `String secondProject = secondTask.getValue().getProjectName();` geändert werden.

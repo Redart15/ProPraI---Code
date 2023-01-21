@@ -1,0 +1,12 @@
+= Professionelle Softwareentwicklung: Praktische Übung 5
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Hinweise
+
+Das Programm soll alle Tags aus einem Stück HTML Code entfernen. 
+Leider gibt es Probleme bei der Kombination von Tags und Quotes (").
+
+Es gibt hier zwei fehlschlagende Testfälle. Finden Sie das Problem und reparieren Sie das Programm.

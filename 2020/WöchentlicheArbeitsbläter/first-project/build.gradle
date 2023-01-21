@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+    id "com.github.spotbugs" version "4.7.1"
+}
+
+application{
+    mainClass = "de.propra.Start"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+}
+
+spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+/*test {
+    useJUnitPlatform()
+}*/

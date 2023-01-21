@@ -1,0 +1,103 @@
+= Professionelle Softwareentwicklung: Praktische Übung 8
+:icons: font
+:icon-set: fa
+:experimental:
+:source-highlighter: rouge
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:stem: latexmath
+endif::[]
+
+== Vorbereitung 
+
+Die Vorbereitungsarbeiten müssen Sie *vor der praktischen Übung* abschließen.
+
+Wir erwarten von Ihnen, dass Sie ...
+
+* ein Headset o.ä. bereithalten.
+Testen Sie Ihr Audiosetup mit anderen Kommiliton:innen (z.B. Ihrer Gruppe) aus.
+Sie können dazu zum Beispiel https://test.bigbluebutton.org/ benutzen.
+* eine IDE installiert haben und mit der Entwicklungsumgebung flüssig umgehen können.
+* den Aufgabentext unten gelesen haben und sich schon einmal Gedanken zur Implementierung gemacht haben.
+
+== Ziele der Übung
+
+Das Lernziel der Aufgabe ist das Testen einer in Komponenten zerlegten Anwendung mithilfe von Test-Doubles.
+Achten Sie bei Ihren Tests besonders darauf, dass jeder Test nur einen Sachverhalt testet.
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein
+. Am Anfang gibt es eine kurze Vorstellungsrunde
+. In der Gruppe wird kurz diskutiert, wie die Lösung angegangen werden soll und es werden noch offene Fragen geklärt
+. Es wird festgelegt, in welcher Reihenfolge die "Driver" Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam gearbeitet nach den Regeln des Mob Programmings
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung
+
+== Einführung: Eine Dystopie 
+
+Wir schreiben das Jahr 2026, seit 6 Jahren leben wir mit dem Corona-Virus.
+Die Impfstoffe funktionieren nicht mit der Zakovia-Variante des Virus und der Großteil der Menschen ist selbst nach der Erkrankung nur wenige Monate lang immun.
+
+Wohl oder übel musste sich die Welt mit dem Virus arrangieren.
+In den USA wurde im vergangenen Jahr am Anfang der zweiten Amtszeit von Präsident Trump ein Schnelltestgerät entwickelt, welches rasenden Absatz hatte.
+In Deutschland wurde das neue Gesetz zur Seuchenkontrolle beschlossen, das den Umgang zwischen Menschen im öffentlichen Raum regelt.
+
+Schnelltestgeräte sind praktisch an jeder Ecke aufgestellt.
+Die Schnelltestgeräte geben QR-Codes aus, die den freien Zugang zu Geschäften, etc. ermöglichen, es gilt aber weiterhin die Einhaltung des Mindestabstands und die Maskenpflicht.
+Positiv getestete Menschen müssen sich umgehend in Quarantäne begeben.
+Zuwiderhandlungen gegen die Quarantäneanordnung werden mit hohen Bußgeldern oder sogar Gefängnis bestraft.
+Glücklicherweise halten sich die meisten Bürger:innen an die Verordnungen und so hat das Leben eine Art Normalzustand erreicht.
+Es gibt sogar wieder Präsenzveranstaltungen an der Uni.
+
+=== Die Software
+
+An praktisch jedem Zugang zu einem Geschäft, öffentlichem Park, Restaurant, usw. sind Zutrittssperren aufgestellt, die den Zugang regeln.
+Eine solche Sperre besteht aus einer Schleuse und einem Scanner für QR-Codes.
+Eine Person, die den Bereich betreten will, betritt die Schleuse und wird aufgefordert ihren QR-Code zu scannen.
+Es werden ausschließlich Personen in den Bereich eingelassen, die einen negativen Schnelltest haben, der nicht älter ist als 5 Stunden ist.
+Versucht eine Person mit positivem Test den Bereich zu betreten, wird der Zugang blockiert und ein Alarm ausgelöst.
+Ist der Test zu alt, darf die Person den Bereich nicht betreten, kann die Schleuse aber verlassen, um sich ein neues Zertifikat zu holen.
+
+Es darf nur eine bestimmte Anzahl von negativ getesteten Personen gleichzeitig in dem Bereich sein.
+Die Anzahl der Personen in einem Bereich hängt von den baulichen Bedingungen und der Nutzungsweise ab.
+Die Höchstpersonenzahl wird vom Amt für Seuchenschutz für jeden Bereich festgelegt.
+Es gibt immer eine Nutzungsreserve, die freigehalten werden muss, damit zum Beispiel Angestellte, die in dem Bereich arbeiten, noch den Bereich betreten dürfen.
+Die Nutzungsreserve wird von dem Betreiber des Bereichs festgelegt.
+Ein Scanner an einem Zugang lässt „normale“ Personen das Gebäude betreten, solange die Höchstpersonenzahl minus der Nutzungsreserve nicht erreicht wurde.
+Angestellte können solange den Bereich betreten, bis die absolute Höchstgrenze erreicht wurde.
+Sondernutzer:innen (Polizei, Zoll, Feuerwehr, Rettungsdienst, THW) dürfen immer den Bereich betreten, unabhängig davon, wie viele Personen im Bereich sind.
+Sondernutzer:innen werden aber bei der Berechnung, ob eine weitere Person den Bereich betreten darf, mitgezählt.
+
+IMPORTANT: Die Software ist *nicht* über die `main`-Methode startbar, da wir noch auf die Fertigstellung der Netzwerk- und Scanner-Komponente warten.
+
+== Aufgabe
+
+Ihre Aufgabe ist es die Tests für die prototypisch erstellte Kontrollsoftware für einen Zugangspunkt zu schreiben.
+
+Machen Sie sich vor der praktischen Übung mit der Implementierung der Software vertraut und überlegen Sie sich schon einmal einige (n ≥ 3) unterschiedliche Testfälle.
+
+Ein Beispiel für einen Testfall für die praktische Übung könnte sein:
+
+„Eine Angestellte will mit einem 10 Minuten alten Test den Bereich betreten und wird vom System eingelassen.“
+
+Denken Sie daran, verschiedene Variationen und Grenzfälle der Eingabedaten zu prüfen.
+Ihre Tests müssen den gelernten Prinzipien entsprechen und nach dem AAA-Muster strukturiert sein.
+Sie werden ziemlich sicher noch kleine Änderungen an der Anwendung durchführen müssen um sie testen zu können.
+
+Verwenden Sie Mockito wo es *sinnvoll* ist.
+
+NOTE: Wir ignorieren die Tatsache, dass in einem Netzwerk Latenzen oder Fehler auftreten können. *Diese Annahme ist vollkommener Unsinn!* Aber uns geht es hier um Testing, nicht um verteilte Systeme!
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander.
+Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct].
+Die TutorInnen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.

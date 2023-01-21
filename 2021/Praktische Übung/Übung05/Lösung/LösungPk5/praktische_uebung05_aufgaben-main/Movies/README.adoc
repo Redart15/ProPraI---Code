@@ -1,0 +1,11 @@
+= Professionelle Softwareentwicklung: Praktische Übung 5
+:icons: font
+:icon-set: fa
+:source-highlighter: rouge
+:experimental:
+
+== Hinweise
+
+Das Programm speichert eine Liste von Filmen, sortiert diese nach Namen und gibt sie wieder aus. 
+
+Leider stürzt das Programm ab. Finden und beheben Sie alle Probleme. 
